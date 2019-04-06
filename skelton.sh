@@ -154,6 +154,10 @@ function on_exit() {
 }
 
 function main() {
+    # スクリプト終了時のハンドラを登録
+    trap 'on_exit $?' EXIT
+
+    # 煩雑な処理は関数で
     sub_process
 
     if [[ $IS_DEBUG == "true" ]]; then
